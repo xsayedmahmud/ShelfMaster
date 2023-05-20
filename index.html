@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShelfMaster</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="logo-fevicon/favicon_io/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <img
+            class="full-logo"
+            src="logo-fevicon/cropped.png"
+            alt="ShelfMaster logo"
+          />
+          <img
+            src="logo-fevicon/icon.png"
+            alt="logo-fevicon"
+            class="logo-icon"
+          />
+        </div>
+        <div class="searchBar">
+          <img
+            src="icon/search_FILL0_wght400_GRAD0_opsz48.svg"
+            alt="search icon"
+          />
+          <input type="search" name="" id="" />
+        </div>
+        <div class="letter-filter">
+          <button class="btn">A</button>
+          <button class="btn">B</button>
+          <button class="btn">C</button>
+          <button class="btn">D</button>
+          <button class="btn">E</button>
+          <button class="btn">F</button>
+          <button class="btn">G</button>
+          <button class="btn">H</button>
+          <button class="btn">I</button>
+          <button class="btn">J</button>
+          <button class="btn">K</button>
+          <button class="btn">L</button>
+          <button class="btn">M</button>
+          <button class="btn">N</button>
+          <button class="btn">O</button>
+          <button class="btn">P</button>
+          <button class="btn">Q</button>
+          <button class="btn">R</button>
+          <button class="btn">S</button>
+          <button class="btn">T</button>
+          <button class="btn">U</button>
+          <button class="btn">V</button>
+          <button class="btn">W</button>
+          <button class="btn">X</button>
+          <button class="btn">Y</button>
+          <button class="btn">Z</button>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="log">
+          <h2>Library Log</h2>
+          <p>Total Books:</p>
+          <p>Finished:</p>
+          <p>Yet To Start:</p>
+          <p>Reading:</p>
+        </div>
+      </div>
+      <div class="main">
+        <div class="content">
+          <div>
+            <label for="filterBy">Filter by</label>
+            <select name="filterBy" id="filterBy">
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="language">Language</option>
+              <option value="published">Year Published</option>
+              <option value="read">Read</option>
+              <option value="not-read">Not Read</option>
+              <option value="reading">Reading</option>
+            </select>
+          </div>
+          <div class="bookshelf">
+            <div class="book">
+              <div class="control">
+                <button class="edit">
+                  <img
+                    src="icon/edit_FILL0_wght400_GRAD0_opsz48.svg"
+                    alt="edit button"
+                  />
+                </button>
+                <button class="delete">
+                  <img src="icon/close.svg" alt="delete-btn" />
+                </button>
+              </div>
+              <div class="book-info">
+                <p class="title">48 Laws of Power</p>
+                <p class="author">By Robert Green</p>
+                <p class="lang">
+                  <span class="low-weight">Language</span> : English
+                </p>
+                <p class="pages"><span class="low-weight">Pages</span> : 480</p>
+                <p class="published">
+                  <span class="low-weight">Published</span> : 1998
+                </p>
+                <p class="subject">
+                  <span class="low-weight">Subject</span> : #self-help
+                </p>
+              </div>
+              <div class="finished">
+                <input
+                  type="checkbox"
+                  name="mark-finished"
+                  id="mark-finished"
+                />
+                <label for="mark-finished">
+                  <span>Mark As Finished</span>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+            <div id="sideModal" class="modal">
+              <button class="close-modal-btn">
+                <img src="icon/close.svg" alt="" />
+              </button>
+              <form class="book-form">
+                <div>
+                  <label for="title">Title</label>
+                  <input type="text" name="title" id="title" />
+                </div>
+                <div>
+                  <label for="author">Author</label>
+                  <input type="text" name="author" id="author" />
+                </div>
+                <div>
+                  <label for="lang">Language</label>
+                  <input type="text" name="lang" id="lang" />
+                </div>
+                <div>
+                  <label for="pages">Pages</label>
+                  <input type="number" name="pages" id="pages" />
+                </div>
+                <div>
+                  <label for="published">Year Published</label>
+                  <input type="number" name="published" id="published" />
+                </div>
+                <div>
+                  <label for="subject">Subject</label>
+                  <textarea
+                    name="subject"
+                    id="subject"
+                    cols="20"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <button>Add</button>
+              </form>
+            </div>
+            <div class="add-item">
+              <button class="add-btn">
+                <img
+                  src="icon/library_add_FILL0_wght400_GRAD0_opsz48.svg"
+                  alt="add item"
+                />
+                <p>New</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
