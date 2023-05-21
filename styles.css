@@ -275,24 +275,24 @@ select {
 }
 
 /* toggle-switch */
-.finished {
+.read {
   user-select: none;
   margin-top: 30px;
   margin: 0 -5px 0 0;
   justify-self: end;
 }
-.finished input {
+.read input {
   position: absolute;
   left: -9999px;
 }
 
-.finished label {
+.read label {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.finished > label > span:last-child {
+.read > label > span:last-child {
   display: inline-block;
   position: relative;
   width: 50px;
@@ -301,13 +301,13 @@ select {
   background-color: var(--color1);
 }
 
-.finished > label > span:last-child::before,
-.finished > label > span:last-child::after {
+.read > label > span:last-child::before,
+.read > label > span:last-child::after {
   content: '';
   position: absolute;
 }
 
-.finished > label > span:last-child::before {
+.read > label > span:last-child::before {
   left: 1px;
   top: 1px;
   width: 18px;
@@ -317,7 +317,7 @@ select {
   z-index: 1;
   transition: all 0.4s cubic-bezier(0.32, 0.91, 0.63, 1.18);
 }
-.finished > label > span:last-child::after {
+.read > label > span:last-child::after {
   right: 3px;
   width: 1rem;
   height: 1rem;
@@ -328,16 +328,16 @@ select {
   background-repeat: no-repeat;
 }
 
-.finished input:checked + label span:last-child {
+.read input:checked + label span:last-child {
   background: var(--color4);
 }
 
-.finished input:checked + label span:last-child::before {
+.read input:checked + label span:last-child::before {
   transform: translateX(30px);
   transition: all 0.3s cubic-bezier(0.32, 0.91, 0.63, 1.18);
 }
 
-.finished input:checked + label span:last-child::after {
+.read input:checked + label span:last-child::after {
   width: 1rem;
   height: 1rem;
   left: 3px;

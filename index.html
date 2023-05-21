@@ -102,32 +102,22 @@
                     alt="edit button"
                   />
                 </button>
-                <button class="delete">
-                  <img src="icon/close.svg" alt="delete-btn" />
+                <button class="close">
+                  <img src="icon/close.svg" alt="close btn" />
                 </button>
               </div>
               <div class="book-info">
                 <p class="title">48 Laws of Power</p>
                 <p class="author">By Robert Green</p>
-                <p class="lang">
-                  <span class="low-weight">Language</span> : English
-                </p>
-                <p class="pages"><span class="low-weight">Pages</span> : 480</p>
-                <p class="published">
-                  <span class="low-weight">Published</span> : 1998
-                </p>
-                <p class="subject">
-                  <span class="low-weight">Subject</span> : #self-help
-                </p>
+                <p class="lang">Language : English</p>
+                <p class="pages">Pages : 480</p>
+                <p class="published">Published : 1998</p>
+                <p class="subject">Subject : #self-help</p>
               </div>
-              <div class="finished">
-                <input
-                  type="checkbox"
-                  name="mark-finished"
-                  id="mark-finished"
-                />
-                <label for="mark-finished">
-                  <span>Mark As Finished</span>
+              <div class="read">
+                <input type="checkbox" name="mark-read" id="mark-read" />
+                <label for="mark-read">
+                  <span>Mark As Read</span>
                   <span></span>
                 </label>
               </div>
@@ -139,19 +129,19 @@
               <form class="book-form">
                 <div>
                   <label for="title">Title</label>
-                  <input type="text" name="title" id="title" />
+                  <input required type="text" name="title" id="title" />
                 </div>
                 <div>
                   <label for="author">Author</label>
-                  <input type="text" name="author" id="author" />
+                  <input required type="text" name="author" id="author" />
                 </div>
                 <div>
                   <label for="lang">Language</label>
-                  <input type="text" name="lang" id="lang" />
+                  <input required type="text" name="lang" id="lang" />
                 </div>
                 <div>
                   <label for="pages">Pages</label>
-                  <input type="number" name="pages" id="pages" />
+                  <input required type="number" name="pages" id="pages" />
                 </div>
                 <div>
                   <label for="published">Year Published</label>
@@ -165,6 +155,17 @@
                     cols="20"
                     rows="3"
                   ></textarea>
+                </div>
+                <div class="read">
+                  <input
+                    type="checkbox"
+                    name="mark-read-form"
+                    id="mark-read-form"
+                  />
+                  <label for="mark-read-form">
+                    <span>Mark As Read</span>
+                    <span></span>
+                  </label>
                 </div>
                 <button>Add</button>
               </form>
