@@ -73,10 +73,9 @@
       <div class="sidebar">
         <div class="log">
           <h2>Library Log</h2>
-          <p>Total Books:</p>
-          <p>Finished:</p>
-          <p>Yet To Start:</p>
-          <p>Reading:</p>
+          <p>Total Books :</p>
+          <p>Read :</p>
+          <p>Not Read :</p>
         </div>
       </div>
       <div class="main">
@@ -126,7 +125,7 @@
               <button class="close-modal-btn">
                 <img src="icon/close.svg" alt="" />
               </button>
-              <form class="book-form">
+              <form class="book-form" data-action="add">
                 <div>
                   <label for="title">Title</label>
                   <input required type="text" name="title" id="title" />
@@ -145,7 +144,14 @@
                 </div>
                 <div>
                   <label for="published">Year Published</label>
-                  <input type="number" name="published" id="published" />
+                  <input
+                    type="number"
+                    min="1"
+                    max="2023"
+                    maxlength="4"
+                    name="published"
+                    id="published"
+                  />
                 </div>
                 <div>
                   <label for="subject">Subject</label>

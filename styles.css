@@ -224,22 +224,31 @@ select {
 
 .bookshelf {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
+  grid-template-columns: repeat(auto-fit, Clamp(250px, 8vw, 350px));
+  grid-auto-rows: auto;
   gap: 20px;
   position: relative;
+  align-content: start;
 }
 
 .book {
   display: grid;
   grid-template-rows: 30px 1fr 30px;
   align-items: center;
-  height: 300px;
+  gap: 10px;
   border-radius: 20px;
   padding: 10px 20px;
   background-color: #fff;
   box-shadow: var(--shadow-elevation-low);
   border-top: 2px solid var(--color4);
   font-family: var(--font-bitter);
+}
+
+.book p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  word-break: break-word;
 }
 
 .book-info {
@@ -397,14 +406,6 @@ select {
   margin-bottom: 10px;
 }
 
-/* .book-form label {
-  background-color: var(--bg-color);
-  transform: translateY(6px);
-  display: inline-block;
-  padding: 0 5px;
-  border-radius: 5px 5px 0 0;
-  color: var(--color3);
-} */
 .book-form div > input,
 textarea {
   width: 100%;
