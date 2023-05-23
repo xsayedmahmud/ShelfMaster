@@ -163,6 +163,7 @@ function addBook() {
   addItem.classList.remove('toggle');
 
   createBook(book);
+  updateBookLog();
 }
 
 function editBook() {
@@ -191,6 +192,7 @@ function editBook() {
   ).textContent = `Published : ${book.published}`;
   bookDiv.querySelector('.subject').textContent = `Subject : ${book.subject}`;
   bookDiv.querySelector('input[type="checkbox"]').checked = book.status;
+  updateBookLog();
 }
 
 bookForm.addEventListener('submit', (e) => {
@@ -210,6 +212,7 @@ bookShelf.addEventListener('click', (e) => {
     myLibrary.splice(index, 1);
     book.remove();
     bookForm.reset();
+    updateBookLog();
   }
 
   if (e.target.matches('.edit, .edit *')) {
@@ -230,3 +233,32 @@ bookShelf.addEventListener('click', (e) => {
     modal.classList.add('active');
   }
 });
+
+const totalBooks = document.querySelector('.log p:nth-child(2)');
+const readBooks = document.querySelector('.log p:nth-child(3)');
+const notReadBooks = document.querySelector('.log p:nth-child(4)');
+
+bookShelf.addEventListener('change', (e) => {
+  if (e.target.matches("input[type='checkbox']")) {
+    const bookIndex = e.target.closest('.book').dataset.index;
+    myLibrary[bookIndex].status = e.target.checked;
+  }
+  updateBookLog();
+});
+
+function updateBookLog() {
+  const total = myLibrary.length;
+  const read = myLibrary.filter((book) => book.status).length;
+  const notRead = total - read;
+
+  if (total === 0 && read === 0 && notRead === 0) {
+    totalBooks.textContent = `Total Books : 0`;
+    readBooks.textContent = `Read : 0`;
+    notReadBooks.textContent = `Not Read : 0`;
+  } else {
+    totalBooks.textContent = `Total Books : ${total}`;
+    readBooks.textContent = `Read : ${read}`;
+    notReadBooks.textContent = `Not Read : ${notRead}`;
+  }
+}
+updateBookLog();

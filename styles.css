@@ -229,6 +229,8 @@ select {
   gap: 20px;
   position: relative;
   align-content: start;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .book {
@@ -357,9 +359,9 @@ select {
 /* add item  */
 
 .modal {
-  position: absolute;
-  right: 0px;
-  bottom: 15px;
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
   height: 100%;
   border-left: 2px solid var(--color4);
   width: 300px;
@@ -449,8 +451,8 @@ textarea:focus {
   display: grid;
   place-items: center;
 
-  right: 20px;
-  bottom: 30px;
+  right: 25px;
+  bottom: 25px;
 
   opacity: 1;
   visibility: visible;
