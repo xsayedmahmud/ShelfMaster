@@ -29,4 +29,4 @@ To use the library app, simply clone the repository and open `index.html` in you
 
 ## 🌐 Live Link
 
-Check out the live version of the Library App [here](https://xsayedmahmud.github.io/shelfMaster/).
+Check out the live version of the Library App [here](https://xsayedmahmud.github.io/ShelfMaster/).
