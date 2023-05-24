@@ -5,7 +5,7 @@ const addItem = document.querySelector('.add-item');
 const bookForm = document.querySelector('.book-form');
 const getById = (id) => document.getElementById(id);
 const bookShelf = document.querySelector('.bookshelf');
-const myLibrary = [];
+let myLibrary = [];
 
 addBtn.addEventListener('click', () => {
   modal.classList.add('active');
@@ -17,20 +17,20 @@ closeModalBtn.addEventListener('click', () => {
   addItem.classList.remove('toggle');
   bookForm.dataset.action = 'add';
   delete bookForm.dataset.bookIndex;
+  bookForm.reset();
 });
 
 class Book {
-  constructor(title, author, lang, pages, status) {
+  constructor(title, author, lang, pages, status, published, subject) {
     this.title = title;
     this.author = author;
     this.lang = lang;
     this.pages = pages;
     this.status = Boolean(status);
+    this.published = published;
+    this.subject = subject;
   }
 }
-
-Book.prototype.published = undefined;
-Book.prototype.subject = undefined;
 
 const defaultBook = new Book(
   '48 Laws of Power',
@@ -147,13 +147,11 @@ function addBook() {
   const author = getById('author').value;
   const lang = getById('lang').value;
   const pages = getById('pages').value;
-  const publishDate = getById('published').value;
+  const published = getById('published').value;
   const subject = getById('subject').value;
   const status = getById('mark-read-form').checked;
 
-  const book = new Book(title, author, lang, pages, status);
-  book.published = publishDate;
-  book.subject = subject;
+  const book = new Book(title, author, lang, pages, status, published, subject);
 
   myLibrary.push(book);
 
@@ -173,7 +171,7 @@ function editBook() {
   book.author = getById('author').value;
   book.lang = getById('lang').value;
   book.pages = getById('pages').value;
-  book.publishDate = getById('published').value;
+  book.published = getById('published').value;
   book.subject = getById('subject').value;
   book.status = getById('mark-read-form').checked;
 
@@ -187,10 +185,32 @@ function editBook() {
   bookDiv.querySelector('.author').textContent = `By ${book.author}`;
   bookDiv.querySelector('.lang').textContent = `Language : ${book.lang} `;
   bookDiv.querySelector('.pages').textContent = `Pages : ${book.pages}`;
-  bookDiv.querySelector(
-    '.published'
-  ).textContent = `Published : ${book.published}`;
-  bookDiv.querySelector('.subject').textContent = `Subject : ${book.subject}`;
+
+  let published = bookDiv.querySelector('.published');
+
+  if (book.published) {
+    if (!published) {
+      published = document.createElement('p');
+      bookDiv.querySelector('.book-info').appendChild(published);
+      published.classList.add('published');
+    }
+    published.textContent = `Published : ${book.published}`;
+  } else if (published) {
+    published.remove();
+  }
+
+  let subject = bookDiv.querySelector('.subject');
+  if (book.subject) {
+    if (!subject) {
+      subject = document.createElement('p');
+      bookDiv.querySelector('.book-info').appendChild(subject);
+      subject.classList.add('subject');
+    }
+    subject.textContent = `Subject : ${book.subject}`;
+  } else if (subject) {
+    subject.remove();
+  }
+
   bookDiv.querySelector('input[type="checkbox"]').checked = book.status;
   updateBookLog();
 }
@@ -262,3 +282,59 @@ function updateBookLog() {
   }
 }
 updateBookLog();
+
+const filterBy = getById('filterBy');
+
+function filterBooks() {
+  const { value } = filterBy;
+
+  let filteredBooks = [];
+
+  switch (value) {
+    case 'title':
+      filteredBooks = myLibrary.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case 'author':
+      filteredBooks = myLibrary.sort((a, b) =>
+        a.author.localeCompare(b.author)
+      );
+      break;
+    case 'language':
+      filteredBooks = myLibrary.sort((a, b) => a.lang.localeCompare(b.lang));
+      break;
+    case 'published':
+      filteredBooks = myLibrary.sort((a, b) =>
+        a.published.localeCompare(b.published)
+      );
+      break;
+    case 'read':
+      filteredBooks = myLibrary.filter((book) => book.status);
+      break;
+    case 'not-read':
+      filteredBooks = myLibrary.filter((book) => !book.status);
+      break;
+    default:
+      filteredBooks = myLibrary;
+  }
+  const unfilteredBooks = myLibrary;
+  myLibrary = filteredBooks;
+  displayBooks(myLibrary);
+  myLibrary = unfilteredBooks;
+}
+
+filterBy.addEventListener('change', filterBooks);
+
+function clearBookShelf() {
+  const books = bookShelf.querySelectorAll('.book');
+  books.forEach((book) => {
+    book.remove();
+  });
+}
+
+function displayBooks(books) {
+  clearBookShelf();
+
+  books.forEach((book) => {
+    createBook(book);
+  });
+}
