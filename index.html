@@ -96,33 +96,66 @@
               <button class="close-modal-btn">
                 <img src="icon/close.svg" alt="" />
               </button>
-              <form class="book-form" data-action="add">
+              <form novalidate class="book-form" data-action="add">
                 <div>
-                  <label for="title">Title</label>
-                  <input required type="text" name="title" id="title" />
+                  <label for="title">Title*</label>
+                  <input
+                    required
+                    minlength="1"
+                    type="text"
+                    name="title"
+                    id="title"
+                  />
+                  <span class="error"></span>
                 </div>
                 <div>
-                  <label for="author">Author</label>
-                  <input required type="text" name="author" id="author" />
+                  <label for="author">Author*</label>
+                  <input
+                    required
+                    minlength="1"
+                    type="text"
+                    name="author"
+                    id="author"
+                    pattern="^[A-Z][a-z]*(([,.]|[' \-])[A-Za-z][a-z]*)*(\.?)( [IVXLCDM]+)?$"
+                  />
+
+                  <span class="error"></span>
                 </div>
                 <div>
-                  <label for="lang">Language</label>
-                  <input required type="text" name="lang" id="lang" />
+                  <label for="language">Language*</label>
+                  <input
+                    required
+                    type="text"
+                    name="language"
+                    id="language"
+                    pattern="^[A-Za-z\s\-]+$"
+                    minlength="1"
+                  />
+                  <span class="error"></span>
                 </div>
                 <div>
-                  <label for="pages">Pages</label>
-                  <input required type="number" name="pages" id="pages" />
+                  <label for="pages">Pages*</label>
+                  <input
+                    required
+                    type="number"
+                    name="pages"
+                    id="pages"
+                    min="1"
+                    max="10000"
+                  />
+                  <span class="error"></span>
                 </div>
                 <div>
-                  <label for="published">Year Published</label>
+                  <label for="published">Year Published*</label>
                   <input
                     type="number"
-                    min="1"
-                    max="2023"
-                    maxlength="4"
+                    min="1450"
+                    pattern="\d{4}"
                     name="published"
                     id="published"
+                    required
                   />
+                  <span class="error"></span>
                 </div>
                 <div>
                   <label for="subject">Subject</label>
@@ -131,7 +164,9 @@
                     id="subject"
                     cols="20"
                     rows="3"
+                    minlength="1"
                   ></textarea>
+                  <span class="error"></span>
                 </div>
                 <div class="read">
                   <input
